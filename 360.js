@@ -46,7 +46,7 @@ const manager = new THREE.LoadingManager();
 manager.onProgress = (_, f, t) => { const p = Math.round(f / t * 100); $('#pct').textContent = p + '%'; $('#barra').style.width = p + '%'; };
 const loader = new THREE.TextureLoader(manager);
 const cache = {};
-const textura = (c, h) => cache[c + h] ||= loader.loadAsync(`${A}${c}_${h}.jpg`).then(t => {
+const textura = (c, h) => cache[c + h] ||= loader.loadAsync(`${A}${c}_${h}.jpg?v=20261111b`).then(t => {
   t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); t.generateMipmaps = true; return t;
 });
 
@@ -64,7 +64,7 @@ for (const c of COMODOS) {
 // miniaturas
 for (const c of COMODOS) {
   const b = document.createElement('button'); b.dataset.c = c.id;
-  b.innerHTML = `<img src="${A}${c.id}_dia_mini.jpg" alt=""><span>${c.nome}</span>`;
+  b.innerHTML = `<img src="${A}${c.id}_dia_mini.jpg?v=20261111b" alt=""><span>${c.nome}</span>`;
   b.addEventListener('click', () => ir(c.id)); $('#trilho').appendChild(b);
 }
 
